@@ -163,7 +163,7 @@ func main() {
 
 		insertCaptcha := DB.NewInsert().Model(captchaEntity)
 		if _, err = insertCaptcha.Exec(Ctx); err != nil {
-			return c.SendStatus(400)
+			return c.Status(fiber.StatusBadRequest).SendString("Failed to create captcha entity")
 		}
 
 		captchaPath := filepath.Join("captchas", captchaId+".png")
