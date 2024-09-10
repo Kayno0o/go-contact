@@ -49,11 +49,7 @@ func Verify(captchaToken string, ip string, contactForm form.Contact) bool {
 		return false
 	}
 
-	if !captcha.VerifyString(captchaEntity.Value, contactForm.Captcha) {
-		return false
-	}
-
-	return true
+	return captcha.VerifyString(captchaEntity.Value, contactForm.Captcha)
 }
 
 func DeleteOldFiles(minutes int) error {
