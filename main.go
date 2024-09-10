@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/joho/godotenv"
+	"kevyn.fr/contact/app/db"
 	"kevyn.fr/contact/app/form"
 	"kevyn.fr/contact/app/mail"
 	"kevyn.fr/contact/app/service/captcha"
@@ -22,6 +23,7 @@ func main() {
 		log.Fatal("Error loading .env file")
 	}
 
+	db.Init()
 	mail.Init()
 
 	if err := os.MkdirAll("captchas", os.ModePerm); err != nil {
